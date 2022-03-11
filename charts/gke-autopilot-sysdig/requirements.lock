@@ -1,0 +1,6 @@
+dependencies:
+- name: sysdig
+  repository: https://charts.sysdig.com/
+  version: 1.12.56
+digest: sha256:496aab8a35d09a575f4f91842559a135b6913ce1d2675bdb190936e279db5cbf
+generated: "2022-03-11T11:39:42.515962+01:00"
