@@ -96,6 +96,7 @@ daemonset:
   ## Extra environment variables that will be pass onto deployment pods
   env: {}
   nodeSelector: {}
+  affinity: null
   # Allow the DaemonSet to set annotations
   annotations: {}
   # Allow the DaemonSet to set labels
