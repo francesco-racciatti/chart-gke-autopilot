@@ -127,13 +127,6 @@ Return the proper Sysdig Agent image name for the Eve Connector
 {{- end -}}
 
 {{/*
-Return the proper Sysdig Agent image name for the Node Image Analyzer
-*/}}
-{{- define "sysdig.image.nodeImageAnalyzer" -}}
-    {{- include "sysdig.imageRegistry" . -}} / {{- .Values.nodeImageAnalyzer.image.repository -}} {{- if .Values.nodeImageAnalyzer.image.digest -}} @ {{- .Values.nodeImageAnalyzer.image.digest -}} {{- else -}} : {{- .Values.nodeImageAnalyzer.image.tag -}} {{- end -}}
-{{- end -}}
-
-{{/*
 Return the proper image name for the Image Analyzer
 */}}
 {{- define "sysdig.image.imageAnalyzer" -}}
@@ -204,12 +197,6 @@ NOTE: I don't like the error message! Too much information.
 {{- if $keyValue -}}
     {{- if hasKey .root.Values.sysdig.settings .setting }}{{ fail (printf "Value '%s' is also set via .sysdig.settings.%s'." .key .setting) }}{{- end -}}
     {{- $keyValue -}}
-{{- end -}}
-{{- end -}}
-
-{{- define "deploy-nia" -}}
-{{- if or .Values.nodeImageAnalyzer.deploy .Values.nodeImageAnalyzer.settings.collectorEndpoint -}}
-true
 {{- end -}}
 {{- end -}}
 
