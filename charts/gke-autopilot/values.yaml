@@ -101,7 +101,7 @@ daemonset:
   affinity: null
   # Required by GKE Autopilot for running the Sysdig Agent
   annotations:
-    - autopilot.gke.io/no-connect: true
+    autopilot.gke.io/no-connect: "true"
   # Allow the DaemonSet to set labels
   labels: {}
   # Liveness and readiness probes initial delay (in seconds)
