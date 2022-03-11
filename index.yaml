@@ -3,9 +3,9 @@ entries:
   gke-autopilot-sysdig:
   - apiVersion: v1
     appVersion: 12.3.1
-    created: "2022-03-11T12:57:55.558683+01:00"
+    created: "2022-03-11T13:06:09.787902+01:00"
     description: Sysdig Monitor and Secure agent for GKE Autopilot clusters
-    digest: b6a9aa3bce8488556f6a9027a8185c867740785310f2d93eb725d02b1e960e2f
+    digest: 7627bbbb09b5938adc4ce9f8e2383f5e18dda60d4af6863b3713f1118355db02
     home: https://www.sysdig.com/
     icon: https://478h5m1yrfsa3bbe262u7muv-wpengine.netdna-ssl.com/wp-content/uploads/2019/02/Shovel_600px.png
     keywords:
@@ -32,6 +32,6 @@ entries:
     - https://app.sysdigcloud.com/#/settings/user
     - https://github.com/draios/sysdig
     urls:
-    - https://github.com/francesco-racciatti/chart-gke-autopilot/releases/download/gke-autopilot-sysdig-1.12.59/gke-autopilot-sysdig-1.12.59.tgz
-    version: 1.12.59
-generated: "2022-03-11T12:57:55.558695+01:00"
+    - https://github.com/francesco-racciatti/chart-gke-autopilot/releases/download/gke-autopilot-sysdig-1.12.57/gke-autopilot-sysdig-1.12.57.tgz
+    version: 1.12.57
+generated: "2022-03-11T13:06:09.787915+01:00"
