@@ -1,4 +1,4 @@
-# Chart: Sysdig
+# GKE Autopilot
 
 [Sysdig](https://sysdig.com/) is a unified platform for container and microservices monitoring, troubleshooting,
 security and forensics. Sysdig platform has been built on top of [Sysdig tool](https://sysdig.com/opensource/sysdig/)
@@ -7,7 +7,7 @@ and [Sysdig Inspect](https://sysdig.com/blog/sysdig-inspect/) open-source techno
 ## Introduction
 
 This chart adds the Sysdig agent for [Sysdig Monitor](https://sysdig.com/product/monitor/)
-and [Sysdig Secure](https://sysdig.com/product/secure/) to all nodes in your cluster via a DaemonSet.
+and [Sysdig Secure](https://sysdig.com/product/secure/) to all nodes in your GKE Autopilot cluster via a DaemonSet.
 
 ## Prerequisites
 
@@ -15,42 +15,51 @@ and [Sysdig Secure](https://sysdig.com/product/secure/) to all nodes in your clu
 
 ## Installing the Chart
 
-First of all you need to add the Sysdig Helm Charts repository:
+First, you need to add the Sysdig Helm Charts repository to your Helm repos:
 
 ```bash
 $ helm repo add sysdig https://charts.sysdig.com/
 ```
 
-To install the chart with the release name `sysdig-agent`, run:
+Connect to the target GKE cluster:
 
 ```bash
-$ helm install --namespace sysdig-agent sysdig-agent --set sysdig.accessKey=YOUR-KEY-HERE --set sysdig.settings.collector=COLLECTOR_URL sysdig/sysdig --set nodeAnalyzer.apiEndpoint=API_ENDPOINT
+$ gcloud container clusters get-credentials YOUR_CLUSTER_NAME --region YOUR_REGION --project YOUR_PROJECT_NAME
+```
+
+Create a namespace within deploy the Agent, e.g. `sysdig`:
+```bash
+$ kubectl create ns sysdig
+```
+
+Choose a name for the deployment, e.g. `sysdig-agent`, and install the chart within the namespace:     
+```bash
+$ helm install sysdig-agent --namespace sysdig --set sysdig.accessKey=YOUR_ACCESS_KEY --set sysdig.settings.collector=COLLECTOR_URL sysdig/sysdig --set sysdig.settings.collector_port=COLLECTOR_PORT gke-autopilot
 ```
 
 To find the values:
 
-- YOUR-KEY-HERE: This is the agent access key. You can retrieve this from Settings > Agent Installation in the Sysdig
-  UI.
-- COLLECTOR_URL: This value is region-dependent in SaaS and is auto-completed on the Get Started page in the UI. (It is
-  a custom value in on-prem installations.)
-- API_ENDPOINT: This is the base URL (region-dependent) for Sysdig Secure and is auto-completed on the Get Started page.
-  E.g. secure.sysdig.com, us2.app.sysdig.com, eu1.app.sysdig.com.
+- `YOUR_ACCESS_KEY` This is the agent access key. 
+  You can retrieve this from `Settings > Agent Installation` in the Sysdig UI.
+- `COLLECTOR_URL`/`COLLECTOR_PORT` These values are region-dependent in SaaS and are auto-completed 
+  on the Get Started page in the UI. They are custom values in on-prem installations.
 
-After a few seconds, you should see hosts and containers appearing in Sysdig Monitor and Sysdig Secure.
+After a few seconds you should see hosts and containers appearing in Sysdig Monitor and Sysdig Secure.
 
 > **Tip**: List all releases using `helm list`
 
 ## Uninstalling the Chart
 
-To uninstall/delete the `sysdig-agent` deployment:
+To uninstall the `sysdig-agent` deployment:
 
 ```bash
-$ helm delete --namespace sysdig-agent sysdig-agent
+$ helm uninstall sysdig-agent --namespace sysdig
 ```
 
-> **Tip**: Use `helm delete --namespace sysdig-agent --purge sysdig-agent` to completely remove the release from Helm internal storage
-
 The command removes all the Kubernetes components associated with the chart and deletes the release.
+
+
+___
 
 ## Configuration
 
