@@ -3,9 +3,9 @@ entries:
   sysdig:
   - apiVersion: v1
     appVersion: 12.3.1
-    created: "2022-03-14T12:29:19.802861+01:00"
+    created: "2022-03-14T12:41:15.33223+01:00"
     description: Sysdig Monitor and Secure agent
-    digest: 78bef00e790e43f08c03d000ec82b652400516cde42f9198fb859add5510572b
+    digest: 653164d316eda962f010ac40bfcde2f96bbb8403570f7b641647fb0a5c410e6d
     home: https://www.sysdig.com/
     icon: https://478h5m1yrfsa3bbe262u7muv-wpengine.netdna-ssl.com/wp-content/uploads/2019/02/Shovel_600px.png
     keywords:
@@ -33,4 +33,4 @@ entries:
     urls:
     - https://github.com/francesco-racciatti/charts/releases/download/sysdig-1.12.57/sysdig-1.12.57.tgz
     version: 1.12.57
-generated: "2022-03-14T12:29:19.802875+01:00"
+generated: "2022-03-14T12:41:15.332243+01:00"
